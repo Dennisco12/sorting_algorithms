@@ -8,50 +8,50 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *temp, *back, *node;
+	listint_t *node, *back, *temp;
 
-	temp = *list;
-	while (temp != NULL)
+	node = *list;
+	while (node != NULL)
 	{
-		back = temp;
-		temp = temp->next;
+		back = node;
+		node = node->next;
 
-		if (temp->n < back->n)
+		if (node->n < back->n)
 		{
-			node = malloc(sizeof(listint_t));
-			if (temp->next == NULL)
-				node->next = NULL;
+			temp = malloc(sizeof(listint_t));
+			if (node->next == NULL)
+				temp->next = NULL;
 			else
-				node->next = temp->next;
+				temp->next = node->next;
 			if (back->prev == NULL)
-				node->prev = NULL;
-			else
-				node->prev = back->prev;
-			temp->next = back;
-			back->prev = temp;
-			if (node->prev != NULL)
-			{
-				temp->prev = node->prev;
-				(node->prev)->next = temp;
-			}
-			else
-			{
 				temp->prev = NULL;
-				*list = temp;
-			}
-			if (node->next != NULL)
+			else
+				temp->prev = back->prev;
+			node->next = back;
+			back->prev = node;
+			if (temp->prev != NULL)
 			{
-				back->next = node->next;
-				(node->next)->prev = back;
+				node->prev = temp->prev;
+				(temp->prev)->next = node;
 			}
-			else	
+			else
+			{
+				node->prev = NULL;
+				*list = node;
+			}
+			if (temp->next != NULL)
+			{
+				back->next = temp->next;
+				(temp->next)->prev = back;
+			}
+			else
 				back->next = NULL;
-			free(node);
-			while (temp->prev != NULL)
-				temp = temp->prev;
-			print_list(temp);
+			free(temp);
+			while (node->prev != NULL)
+				node = node->prev;
+			print_list(node);
 		}
-		if (temp->next == NULL)
+		if (node->next == NULL)
 			break;
 	}
 }
