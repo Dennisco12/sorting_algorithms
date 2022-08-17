@@ -15,17 +15,17 @@ void shell_sort(int *array, size_t size)
 	size_t gap, idx, temp, smidx, num;
 	int n = 1;
 
+	if (size < 2)
+		return;
 	knuth[0] = 1;
 	while (n < 20)
 	{
 		knuth[n] = (knuth[n - 1] * 3) + 1;
 		n++;
 	}
-
 	n = 0;
 	while (knuth[n + 1] < size)
 		n++;
-
 	while (n >= 0)
 	{
 		gap = knuth[n];

@@ -13,6 +13,9 @@ void cocktail_sort_list(listint_t **list)
 
 	node = *list;
 
+	if (node->next == NULL || node == NULL)
+		return;
+
 	while (flag == 1)
 	{
 		flag = 0;
