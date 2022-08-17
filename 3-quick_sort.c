@@ -1,20 +1,6 @@
 #include "sort.h"
 
 /**
- * swap - This swaps two ints in an array
- * @a: First int
- * @b: second int
- */
-void swap(int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-/**
  * quick_sort - A function that sorts an array of integers in
  * ascending order using the Quick sort algorithm.
  * It implements the Lomuto partition scheme
