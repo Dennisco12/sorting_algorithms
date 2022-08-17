@@ -11,26 +11,16 @@ void insertion_sort_list(listint_t **list)
 	listint_t *node, *back, *temp, *temp2;
 
 	node = *list;
-
 	if ((node->next)->next == NULL)
 		return;
-
 	while (node != NULL)
 	{
 		back = node;
 		node = node->next;
-
 		if (node->n < back->n)
 		{
-			if (node->next != NULL)
-				temp = node->next;
-			else
-				temp = NULL;
-
-			if (back->prev == NULL)
-				temp2 = NULL;
-			else
-				temp2 = back->prev;
+			temp = node->next;
+			temp2 = back->prev;
 			node->next = back;
 			back->prev = node;
 			if (temp2 != NULL)
